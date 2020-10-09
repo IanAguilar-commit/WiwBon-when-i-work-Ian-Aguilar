@@ -1,7 +1,7 @@
 
 # Bienvenid@!! 
 
-En este repositorio podés encontrar un template de Framewor7 listo para usar para el desarrollo de aplicaciones con Apache Cordova.
+En este repositorio podés encontrar un template de Framework7 listo para usar para el desarrollo de aplicaciones con Apache Cordova.
 
 ## Qué es [Framework7](https://framework7.io/)?
 
