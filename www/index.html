@@ -9,8 +9,8 @@
             * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">  -->
 
     <!-- Required meta tags-->
     <meta charset="utf-8">
@@ -19,7 +19,7 @@
     <!-- Color theme for statusbar -->
     <meta name="theme-color" content="#2196f3">
     <!-- Your app title -->
-    <title>My App</title>
+    <title>Libreta de trabajo</title>
     <!-- Path to Framework7 Library CSS -->
     <link rel="stylesheet" href="lib/framework7/css/framework7.bundle.min.css">
     <!-- Path to icons -->
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
+<body class="color-theme-green">
     <div id="app">
         <!-- Statusbar overlay -->
         <div class="statusbar"></div>
@@ -38,15 +38,15 @@
             <!-- Initial Page, "data-name" contains page name -->
             <div data-name="index" class="page">
     
-                <!-- Top Navbar -->
+             <!--  Top Navbar 
                 <div class="navbar">
                     <div class="navbar-bg"></div>
                     <div class="navbar-inner">
                         <div class="left"><i class="icon icon-back"></i></div>
-                        <div class="title">Page Title</div>
+                        <div class="title">Mi Perfil App</div>
                         <div class="right"><i class="icon icon-forward"></i></div>
                     </div>
-                </div>
+                </div> -->
         
                 <!-- Toolbar -->
                 <div class="toolbar toolbar-bottom">
@@ -60,33 +60,88 @@
                 <!-- Scrollable page content -->
                 <div class="page-content">
                     <div class="block">
-                        <p>Page content goes here</p>
-                        <!-- Link to another page -->
-                        <a href="/about/" data-view=".page-content">About app</a>
-
-                        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
-                        <p><a href="#" data-popup=".my-popup" class="popup-open">Open Popup</a></p>
-
-                        <!-- And somewhere in DOM -->
-                        <div class="popup my-popup">
-                            <div class="view">
-                                <div class="page">
-                                    <div class="navbar">
-                                        <div class="navbar-bg"></div>
-                                        <div class="navbar-inner">
-                                            <div class="title">Popup</div>
-                                            <div class="right">
-                                                <!-- Link to close popup -->
-                                                <a class="link popup-close">Close</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="page-content">
-                                      ...
-                                    </div>
-                                </div>
-                            </div>
+                        <h2>Libreta de Trabajo</h2>
+                
+                        <!--
+                <form class="list" id="my-form">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">E-mail</div>
+                          <div class="item-input-wrap">
+                            <input type="email" id="logEmail" name="email" placeholder="E-mail">
+                          </div>
                         </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">E-mail</div>
+                          <div class="item-input-wrap">
+                            <input type="password" id="logPass" name="logPass" placeholder="Su clave">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    
+                    
+                  </ul>
+                </form> -->
+
+
+                <form class="list" id="my-form">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Legajo</div>
+                          <div class="item-input-wrap">
+                            <input type="text" id="logLegajo1" name="logLegajo1" placeholder="Ej:1515">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </form> 
+
+                <div class="block block-strong row">
+                  <div class="col"><a class="button" id="btnLegajo">Ingresar</a></div>
+                  <a href="/empleado/" data-view=".page-content">Ingresar1</a>
+                  
+                </div>
+
+
+
+               <!-- <div class="block block-strong row">
+                  <div class="col"><a class="button " id="btnLogin">Ingresar</a></div>
+                  
+                </div> -->
+
+
+
+
+                        <!-- Link to another page -->
+                        <a href="/registracion1/" data-view=".page-content">Me quiero registrar</a>
+
+                        <a href="/solicitud/" data-view=".page-content">Solicitar franco</a>
+                        
+
+
+                          
+            
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -97,6 +152,29 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/framework7/js/framework7.bundle.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+
+     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDCKm4IRH1GJtSxxQIL2E1EctkCodcJoEc",
+    authDomain: "aguilar-ian-proyecto.firebaseapp.com",
+    databaseURL: "https://aguilar-ian-proyecto.firebaseio.com",
+    projectId: "aguilar-ian-proyecto",
+    storageBucket: "aguilar-ian-proyecto.appspot.com",
+    messagingSenderId: "384552332167",
+    appId: "1:384552332167:web:a1be5d0e7184b164a34122"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 
 </html>
