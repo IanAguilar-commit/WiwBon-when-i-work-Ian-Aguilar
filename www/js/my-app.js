@@ -85,7 +85,7 @@ colusuarios.orderBy('nombre','desc').limit(5).get()
 querySnapshot.forEach(function(doc) {
     console.log("data:" + doc.data().nombre);
     n = doc.data().nombre;
-    $$('#usuarios1').append("<p>"+ n + "</p>");
+    $$('#usuarios1').text(n);
   });
 
 })
@@ -172,7 +172,7 @@ var colusuarios = db.collection("usuarios");
 querySnapshot.forEach(function(doc) {
     console.log("data:" + doc.data().nombre);
     n = doc.data().nombre;
-    $$('#usuarios1').append("<p>"+ n + "</p>");
+    $$('#imprimir').append('<div class="timeline"><div class="timeline-item"><div class="timeline-item-date">21 <small>DEC</small></div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-inner"><div class="timeline-item-time">'+n+'</div><div class="timeline-item-title">Title</div><div class="timeline-item-subtitle">Subtitle</div><div class="timeline-item-text">Text</div></div></div></div><div class="timeline-item"></div></div>');
   });
 
 })
