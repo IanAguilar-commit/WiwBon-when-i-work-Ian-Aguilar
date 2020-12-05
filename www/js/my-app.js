@@ -185,7 +185,7 @@ docRef.get()
 .then( function(querySnapshot) {
 querySnapshot.forEach(function(doc) {
     console.log("data:" + doc.data().nombre);
-    n = doc.data().f;
+    n = doc.data();
     $$('#imprimir').append('<div class="timeline"><div class="timeline-item"><div class="timeline-item-date">21 <small>DEC</small></div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-inner"><div class="timeline-item-time">'+n+'</div><div class="timeline-item-title">Title</div><div class="timeline-item-subtitle">Subtitle</div><div class="timeline-item-text">Text</div></div></div></div><div class="timeline-item"></div></div>');
   });
 
@@ -194,7 +194,7 @@ querySnapshot.forEach(function(doc) {
   console.error("Error:" + error);
 
   } );
-*/
+*//*
 var docRef = db.collection("usuarios").doc("b17");
 
 docRef.get().then(function(querySnapshot) {
@@ -207,6 +207,26 @@ docRef.get().then(function(querySnapshot) {
         console.log("Error getting documents: ", error);
     });
     
+})
+
+*/
+            var docRef = db.collection("usuarios").doc("b17");
+
+            docRef.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    n = doc.data();
+                  $$('#imprimir').append('<div class="timeline"><div class="timeline-item"><div class="timeline-item-date">21 <small>DEC</small></div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-inner"><div class="timeline-item-time">'+n+'</div><div class="timeline-item-title">Title</div><div class="timeline-item-subtitle">Subtitle</div><div class="timeline-item-text">Text</div></div></div></div><div class="timeline-item"></div></div>');
+  
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+
 })
 $$(document).on("page:init", '.page[data-name="solicitud"]', function (e) {
   // Do something here when page with data-name="about" attribute loaded and initialized
