@@ -199,18 +199,17 @@ querySnapshot.forEach(function(doc) {
   //ESTE SI FUNCIONA
 
   var docRef = db.collection("usuarios").doc("b17");
-
   docRef
     .get()
     .then(function (doc) {
       if (doc.exists) {
         console.log("datitos", JSON.stringify(doc.data()));
         n = doc.data().f1;
-        $$("#imprimir").append(
-          '<div class="timeline"><div class="timeline-item"><div class="timeline-item-date">21 <small>DEC</small></div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-inner"><div class="timeline-item-time">' +
-            n +
-            '</div><div class="timeline-item-title">Title</div><div class="timeline-item-subtitle">Subtitle</div><div class="timeline-item-text">Text</div></div></div></div><div class="timeline-item"></div></div>'
-        );
+        
+        $$('#imprimir').append('<div class="timeline"><div class="timeline-item"><div class="timeline-item-date">21 <small>DEC</small></div><div class="timeline-item-divider"></div><div class="timeline-item-content"><div class="timeline-item-inner"><div class="timeline-item-time">'+n+'</div><div class="timeline-item-title">Title</div><div class="timeline-item-subtitle">Subtitle</div><div class="timeline-item-text">Text</div></div></div></div><div class="timeline-item"></div></div>');
+        n1 = doc.data().nombre;
+        $$("#nombreusuario").text("" + n1);
+        
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -219,7 +218,6 @@ querySnapshot.forEach(function(doc) {
     .catch(function (error) {
       console.log("Error getting document:", error);
     });
-
   /*    //pruebita
 var docRef = db.collection('usuarios').doc('5mmwJba8FVMrdHGOPBYraOQzDe22')
   .collection('restaurants').doc('qZg6gkOvYHOPXHDJAqBF').get();
