@@ -108,3 +108,26 @@ h1 {
         background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
     }
 }
+.button > i {
+    width: 24px;
+    margin-right: 5px;
+}
+
+.centrado {
+    text-align: center;
+}
+
+.col25{
+    width:25%;
+    float: left;
+}
+
+.col33 {
+    width:33%;
+    float: left;
+}
+
+.col50{
+    width:50%;
+    float: left;
+}

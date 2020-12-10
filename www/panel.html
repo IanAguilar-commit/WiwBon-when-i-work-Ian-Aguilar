@@ -1,28 +1,83 @@
 <!-- We don't need a full layout in this file because this page will be parsed with Ajax.  -->
-<div class="page" data-name="about">
-    <div class="navbar">
-        <div class="navbar-inner sliding">
+<div class="page" data-name="panel">
+  <div class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-inner sliding" >
         <div class="left">
-            <a href="#" class="link back">
-            <i class="icon icon-back"></i>
-            <span class="ios-only">Back</span>
-            </a>
-        </div>
-        <div class="title">Panel</div>
-        </div>
+        <a href="#" class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">WiwBon</div>
+      <div class="subnavbar">
+        <!-- Searchbar with auto init -->
+        <form class="searchbar">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap">
+              <input type="search" placeholder="Buscar Legajo" />
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+            <span class="searchbar-disable-button if-not-aurora">Cancel</span>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="page-content">
-        <div class="block-title">Welcome to Framework7</div>
-        <div class="block block-strong">
-        <p>Framework7</p>
-
-        <div class="row">
-            <div class="col-100"><h2 id="perNombre"></h2></div>
-            <div class="col-100"><h2 id="perNombre"></h2></div>
-            <div class="col-100"><img src="" id="perFoto" style="border-radius:50% solid blue; width:50vw; height:50vw;"/></div>
-            <div class="col-50"><button class="col button button-fill" id="btnGal">Galería</button></div>
-            <div class="col-50"><button class="col button button-fill" id="btnCam">Cámara</button></div>
-            <div class="col-100"><button class="col button button-fill" id="btnPerfil">Guardar</button></div>
-        </div>
+  </div>
+  <div class="page-content">
+    <!-- Searchbar backdrop -->
+    <div class="searchbar-backdrop"></div>
+    <!-- hide-on-search element -->
+    <div class="block searchbar-hide-on-search">
+      
+      <button class="col button button-fill color-green" id="editar">Editar</button>
+      
     </div>
+    <!-- search target list -->
+    <div class="list searchbar-found">
+        <div id=busquedatos></div> 
+    </div>
+     <!--
+    <div class="list searchbar-found">
+      <ul>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Acura</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Audi</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">BMW</div>
+          </div>
+        </li>
+        ...
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Volvo</div>
+          </div>
+        </li>
+      </ul>
+    </div> -->
+    <!-- Nothing found message -->
+    <div class="block searchbar-not-found">
+      <div class="block-inner">Sin Resultados</div>
+    </div>
+  </div>
 </div>
+<!--       <div class="navbar-inner sliding">
+      <div class="left">
+        <a href="#" class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">Panel de Administracion</div>
+    </div>
+
+-->
