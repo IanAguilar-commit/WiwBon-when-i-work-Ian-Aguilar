@@ -139,15 +139,16 @@ console.log("OK, con el id" + docRef.id);
 */
 
   //LLAMO FUNCION LOGIN CUANDO TOCO BOTON LOGIN
-  $$("#btnLogin").on("click", fnLogin);
+  //$$("#btnPanel").on("click", fnLogin);
   //LLAMO FUNCION logLegajo CUANDO TOCO BOTON ingresar
-  $$("#btnLegajo").on("click", logLegajo);
+  //$$("#btnLegajo").on("click", logLegajo);
   //$$("#btnLegajo").on("click", mostrar);
   $$("#editar").on("click", editar);
 
   $$("#buscar").on("click", function browsecall() {
     console.log("func browsecall");
     miID = $$("#buscar1").val();
+    editar();
   });
   $$("#guardar1").on("click", guardar);
   $$("#nuevo1").on("click", nuevo);
@@ -157,9 +158,9 @@ console.log("OK, con el id" + docRef.id);
 $$(document).on("page:init", function (e) {
   // Do something here when page loaded and initialized
   console.log(e);
-  $$("#btnLegajo").on("click", logLegajo);
-  // $$("#btnLegajo").on("click", mostrar);
-  $$("#btnPanel").on("click", adminPanel);
+  //$$("#btnLegajo").on("click", logLegajo);
+
+  //$$("#btnPanel").on("click", adminPanel);
   $$("#editar").on("click", editar);
   $$("#refrescar").on("click", function refresh() {
     mainView.router.refreshPage();
@@ -167,9 +168,10 @@ $$(document).on("page:init", function (e) {
   $$("#buscar").on("click", function browsecall() {
     console.log("func browsecall");
     miID = $$("#buscar1").val();
+    editar();
   });
   $$("#guardar1").on("click", guardar);
-  $$("#guardar2").on("click", guardarnuevo);
+  $$("#guardar3").on("click", guardarnuevo);
 
   $$("#nuevo1").on("click", nuevo);
 });
@@ -215,17 +217,23 @@ $$(document).on("page:init", '.page[data-name="panel"]', function (e) {
         n2 = doc.data().legajo;
         let nuevaLongitud = uids.push(n2); // Añade "n legajo" al final
         let n3 = uids[i];
+        vfm = doc.data().fechasoli;
+        vm = doc.data().motivosoli;
 
-        if (fechasoli !== "") {
-         
-            document.getElementById(n2).style.visibility = "visible";
-          
-            else{
-         
-            document.getElementById(n2).style.visibility = "hidden";
-          }
+        /*
+          if (fechasoli == "") {
+        $$(n2).attr('class','invisible'); 
+        console.log("if positivo");
         
+        //  document.getElementsByClassName('appBanner')[0].style.visibility = 'hidden';
+       // $$(n2).attr('src','img/iconmsg.png');
+        console.log
+      } else {console.log("if neg");
+        //$$(n2).attr('src','img/iconempty.png');
+          $$(n2).attr('class','invisible'); 
 
+      }
+          */
         $$("#busquedatos").append(
           '<p class="row"><ul><li class="item-content" value="' +
             n2 +
@@ -237,7 +245,7 @@ $$(document).on("page:init", '.page[data-name="panel"]', function (e) {
             n2 +
             '<img src="/img/iconmsg.png" id="' +
             n2 +
-            '" alt="Solicitud!" width="25" height="25"><div><button class="col button button-small button-round button-fill color-red btn-borrar" data-id=' +
+            '" class="appBanner" alt="Solicitud!" width="25" height="25"><div><button class="col button button-small button-round button-fill color-red btn-borrar" data-id=' +
             task.id +
             '>Borrar</button><button class="col button button-small button-round button-fill color-green btn-edit" data-id=' +
             task.id +
@@ -308,13 +316,13 @@ $$(document).on("page:init", '.page[data-name="index"]', function (e) {
   console.log(e);
 
   //LLAMO FUNCION LOGIN CUANDO TOCO BOTON LOGIN
-  $$("#btnLogin").on("click", fnLogin);
+  $$("#btnPanel").on("click", fnLogin);
   $$("#btnLegajo").on("click", logLegajo);
   //$$("#btnLegajo").on("click", mostrar);
-  $$("#btnPanel").on("click", adminPanel);
+  //$$("#btnPanel").on("click", adminPanel);
   $$("#guardar1").on("click", guardar);
   $$("#nuevo1").on("click", nuevo);
-  $$("#guardar2").on("click", guardarnuevo);
+  $$("#guardar3").on("click", guardarnuevo);
   $$("#refrescar").on("click", function refresh() {
     mainView.router.refreshPage();
   });
@@ -474,7 +482,7 @@ $$(document).on("page:init", '.page[data-name="solicitud"]', function (e) {
     console.log("editar");
     $$("#guardar1").on("click", guardar);
     $$("#nuevo").on("click", nuevo);
-    $$("#guardar2").on("click", guardarnuevo);
+    //$$("#guardar2").on("click", guardarnuevo);
   });
 
   $$("#solicitar").on("click", function () {
@@ -514,29 +522,6 @@ $$(document).on("page:init", '.page[data-name="solicitud"]', function (e) {
   });
 
   /* MIS FUNCIONES*/
-
-  function fnLogin() {
-    //lishioon@gmail.com
-    email = $$("#logEmail").val();
-    password = $$("#logPass").val();
-
-    console.log("email:" + email);
-    console.log("password:" + password);
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(function () {
-        mainView.router.navigate("/panel/");
-      })
-
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
-  }
 });
 
 function logLegajo() {
@@ -575,6 +560,39 @@ function logLegajo() {
       console.error("Error:" + error);
     });
     */
+}
+
+function fnLogin() {
+  //lishioon@gmail.com
+
+  app.dialog.password("Ingrese clave Admin", function (password) {
+    email = "lishioon@gmail.com";
+     if(password==1515){adminPanel(); 
+        console.log("logueado")
+     }
+    /*
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(function () {
+        app.dialog.alert("Bienvenido!<br>Password:" + password);
+        adminPanel();
+      })
+
+      .catch(function (error) {
+        // Handle Errors here.
+        app.dialog.alert("Contraseña Incorrecta");
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+
+    email = "lishioon@gmail.com";
+    //password = $$("#logPass").val();
+    //PASSWORD m1515m
+    console.log("email:" + email);
+    console.log("password:" + password); */
+  });
 }
 
 function adminPanel() {
@@ -617,6 +635,8 @@ function editar(id) {
         n8 = doc.data().f8;
         n9 = doc.data().f9;
         n10 = doc.data().f10;
+        vfm = doc.data().fechasoli;
+        vm = doc.data().motivosoli;
 
         $$("#nombre1").text((document.getElementById("nombre1").value = n));
         $$("#apellido1").text(
@@ -633,6 +653,12 @@ function editar(id) {
         $$("#f8").text((document.getElementById("f8").value = n8));
         $$("#f9").text((document.getElementById("f9").value = n9));
         $$("#f10").text((document.getElementById("f10").value = n10));
+         /* $$("#verfechasoli").text(
+          (document.getElementById("verfechasoli").text = vfm)
+        );
+        $$("#vermotivo").text(
+          (document.getElementById("vermotivo").text = vm)
+        );   */
 
         //  document.write('<input type="text" value="'+n+'" id="ed1" name="ed1">');
         // document.write('<input type="text" value="'+doc.data().apellido+'" id="ed2" name="ed2">');
@@ -666,8 +692,9 @@ function guardar() {
       f8: document.getElementById("f8").value,
       f9: document.getElementById("f9").value,
       f10: document.getElementById("f10").value,
-      fechasoli: "",
-      motivosoli: "",
+      // fechasoli: document.getElementById("verfechasoli").value,
+      //motivosoli: document.getElementById("vermotivo").value,
+
     })
     .then(function () {
       console.log("Document successfully written!");
@@ -678,27 +705,9 @@ function guardar() {
     });
 }
 
-function nuevo() {
-  console.log("fn nuevo");
-  miID = 0;
-
-  $$("#nombre1").text((document.getElementById("nombre1").value = ""));
-  $$("#apellido1").text((document.getElementById("apellido1").value = ""));
-  $$("#legajo1").text((document.getElementById("legajo1").value = ""));
-  $$("#f1").text((document.getElementById("f1").value = ""));
-  $$("#f2").text((document.getElementById("f2").value = ""));
-  $$("#f3").text((document.getElementById("f3").value = ""));
-  $$("#f4").text((document.getElementById("f4").value = ""));
-  $$("#f5").text((document.getElementById("f5").value = ""));
-  $$("#f6").text((document.getElementById("f6").value = ""));
-  $$("#f7").text((document.getElementById("f7").value = ""));
-  $$("#f8").text((document.getElementById("f8").value = ""));
-  $$("#f9").text((document.getElementById("f9").value = ""));
-  $$("#f10").text((document.getElementById("f10").value = ""));
-}
-
 function guardarnuevo() {
   console.log("guardar nuevo");
+
   miID = document.getElementById("legajo1").value;
   var db = firebase.firestore();
   db.collection("usuarios")
@@ -717,17 +726,46 @@ function guardarnuevo() {
       f8: document.getElementById("f8").value,
       f9: document.getElementById("f9").value,
       f10: document.getElementById("f10").value,
-      fechasoli: "",
-      motivosoli: "",
+      //fechasoli: "1",
+      //motivosoli: "1",
+
     })
-    .then(function (doc) {
+    .then(function (doc){
       console.log("Document successfully written!");
       app.dialog.alert("Guardado con Éxito");
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);
-    });
+    })
+};
+
+function nuevo() {
+  console.log("fn nuevo");
+  miID = 0;
+
+  $$("#nombre1").text((document.getElementById("nombre1").value = ""));
+  $$("#apellido1").text((document.getElementById("apellido1").value = ""));
+  $$("#legajo1").text((document.getElementById("legajo1").value = ""));
+  $$("#f1").text((document.getElementById("f1").value = ""));
+  $$("#f2").text((document.getElementById("f2").value = ""));
+  $$("#f3").text((document.getElementById("f3").value = ""));
+  $$("#f4").text((document.getElementById("f4").value = ""));
+  $$("#f5").text((document.getElementById("f5").value = ""));
+  $$("#f6").text((document.getElementById("f6").value = ""));
+  $$("#f7").text((document.getElementById("f7").value = ""));
+  $$("#f8").text((document.getElementById("f8").value = ""));
+  $$("#f9").text((document.getElementById("f9").value = ""));
+  $$("#f10").text((document.getElementById("f10").value = ""));
+  //$$("#verfechamotivo").text((document.getElementById("verfechamotivo").value = ""));
+  //$$("#vermotivo").text((document.getElementById("vermotivo").value = ""));
+     /*   $$("#verfechasoli").text(
+          (document.getElementById("verfechasoli").text = "1")
+        );
+        $$("#vermotivo").text(
+          (document.getElementById("vermotivo").text = "1")
+        ); */
 }
+
 const borrarusuario = (idelete) => {
   app.dialog.confirm("¿Seguro desea borrar?", function (id) {
     var db = firebase.firestore();

@@ -131,3 +131,7 @@ h1 {
     width:50%;
     float: left;
 }
+
+
+.invisible      { visibility: hidden; }   /* Los párrafos no serán visibles                       */
+.visible   { visibility: visible; }  /* excepto los que tengan class = showme (clase= muéstrame)                */
