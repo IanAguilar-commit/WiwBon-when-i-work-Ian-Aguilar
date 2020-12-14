@@ -152,6 +152,18 @@ console.log("OK, con el id" + docRef.id);
   });
   $$("#guardar1").on("click", guardar);
   $$("#nuevo1").on("click", nuevo);
+  $$("#logout").on("click", function () {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        // Sign-out successful.
+        console.log("logout success")
+      })
+      .catch(function (error) {
+        // An error happened.
+      });
+  });
 });
 
 // Option 1. Using one 'page:init' handler for all pages
@@ -567,10 +579,9 @@ function fnLogin() {
 
   app.dialog.password("Ingrese clave Admin", function (password) {
     email = "lishioon@gmail.com";
-     if(password==1515){adminPanel(); 
-        console.log("logueado")
-     }
-    /*
+    // if(password==1515){adminPanel();
+    // console.log("logueado")
+
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -591,7 +602,7 @@ function fnLogin() {
     //password = $$("#logPass").val();
     //PASSWORD m1515m
     console.log("email:" + email);
-    console.log("password:" + password); */
+    console.log("password:" + password);
   });
 }
 
@@ -653,7 +664,13 @@ function editar(id) {
         $$("#f8").text((document.getElementById("f8").value = n8));
         $$("#f9").text((document.getElementById("f9").value = n9));
         $$("#f10").text((document.getElementById("f10").value = n10));
-         /* $$("#verfechasoli").text(
+        $$("#verfechasoli").text(
+          (document.getElementById("verfechasoli").value = vfm)
+        );
+        $$("#vermotivo").text(
+          (document.getElementById("vermotivo").value = vm)
+        );
+        /* $$("#verfechasoli").text(
           (document.getElementById("verfechasoli").text = vfm)
         );
         $$("#vermotivo").text(
@@ -694,7 +711,6 @@ function guardar() {
       f10: document.getElementById("f10").value,
       // fechasoli: document.getElementById("verfechasoli").value,
       //motivosoli: document.getElementById("vermotivo").value,
-
     })
     .then(function () {
       console.log("Document successfully written!");
@@ -726,18 +742,18 @@ function guardarnuevo() {
       f8: document.getElementById("f8").value,
       f9: document.getElementById("f9").value,
       f10: document.getElementById("f10").value,
-      //fechasoli: "1",
-      //motivosoli: "1",
-
+      fechasoli: document.getElementById("verfechasoli").value,
+      motivosoli: document.getElementById("vermotivo").value,
     })
-    .then(function (doc){
+    .then(function (doc) {
       console.log("Document successfully written!");
       app.dialog.alert("Guardado con Éxito");
+      mainView.router.navigate("/panel/");
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);
-    })
-};
+    });
+}
 
 function nuevo() {
   console.log("fn nuevo");
@@ -756,14 +772,10 @@ function nuevo() {
   $$("#f8").text((document.getElementById("f8").value = ""));
   $$("#f9").text((document.getElementById("f9").value = ""));
   $$("#f10").text((document.getElementById("f10").value = ""));
-  //$$("#verfechamotivo").text((document.getElementById("verfechamotivo").text = ""));
-  //$$("#vermotivo").text((document.getElementById("vermotivo").text = ""));
-     /*   $$("#verfechasoli").text(
-          (document.getElementById("verfechasoli").text = "1")
-        );
-        $$("#vermotivo").text(
-          (document.getElementById("vermotivo").text = "1")
-        ); */
+  $$("#verfechasoli").text(
+    (document.getElementById("verfechasoli").value = "")
+  );
+  $$("#vermotivo").text((document.getElementById("vermotivo").value = ""));
 }
 
 const borrarusuario = (idelete) => {
