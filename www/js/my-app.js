@@ -245,7 +245,7 @@ $$(document).on("page:init", '.page[data-name="panel"]', function (e) {
             n1 +
             "  legajo:" +
             n2 +
-            '<img src="/img/iconmsg.png" id="' +
+            '<img src="img/iconmsg.png" id="' +
             n2 +
             '" class="appBanner" alt="Solicitud!" width="25" height="25"><div><button class="col button button-small button-round button-fill color-red btn-borrar" data-id=' +
             task.id +

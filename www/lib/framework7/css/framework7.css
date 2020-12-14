@@ -14,10 +14,10 @@
   Core
   ==================== */
 :root {
-  --f7-theme-color: #007aff;
-  --f7-theme-color-rgb: 0, 122, 255;
-  --f7-theme-color-shade: #0066d6;
-  --f7-theme-color-tint: #298fff;
+  --f7-theme-color: #0e3a90;
+  --f7-theme-color-rgb: 14, 58, 144;
+  --f7-theme-color-shade: #0a2b6b;
+  --f7-theme-color-tint: #1249b5;
   --f7-safe-area-left: 0px;
   --f7-safe-area-right: 0px;
   --f7-safe-area-top: 0px;
@@ -25,6 +25,8 @@
   --f7-safe-area-outer-left: 0px;
   --f7-safe-area-outer-right: 0px;
   --f7-device-pixel-ratio: 1;
+
+
 }
 @supports (left: env(safe-area-inset-left)) {
   :root {
@@ -609,7 +611,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background: #fff;
+  background:#0e3a90;
   overflow: hidden;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -769,8 +771,8 @@ html.device-full-viewport body {
   */
 }
 .ios {
-  --f7-page-transition-duration: 400ms;
-  --f7-page-bg-color: #efeff4;
+  --f7-page-transition-duration: 900ms;
+  --f7-page-bg-color: #0e3a90;
 }
 .ios .theme-dark,
 .ios.theme-dark {
@@ -2749,7 +2751,7 @@ html.device-full-viewport body {
 }
 /* === Toolbar === */
 :root {
-  /*
+  
   --f7-toolbar-bg-color: var(--f7-bars-bg-color);
   --f7-toolbar-bg-color-rgb: var(--f7-bars-bg-color-rgb);
   --f7-toolbar-bg-image: var(--f7-bars-bg-image);
@@ -2757,7 +2759,7 @@ html.device-full-viewport body {
   --f7-toolbar-link-color: var(--f7-bars-link-color);
   --f7-toolbar-text-color: var(--f7-bars-text-color);
   --f7-tabbar-link-active-color: var(--f7-theme-color);
-  */
+  
   --f7-tabbar-link-active-bg-color: transparent;
   --f7-tabbar-label-text-transform: none;
   --f7-toolbar-hide-show-transition-duration: 400ms;
@@ -5890,4 +5892,23 @@ i.icon {
 .fab-backdrop.backdrop-in {
   visibility: visible;
   opacity: 1;
+}
+
+.centrado {
+    text-align: center;
+}
+
+.col25{
+    width:25%;
+    float: left;
+}
+
+.col33 {
+    width:33%;
+    float: left;
+}
+
+.col50{
+    width:50%;
+    float: center;
 }
