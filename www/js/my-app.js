@@ -152,18 +152,7 @@ console.log("OK, con el id" + docRef.id);
   });
   $$("#guardar1").on("click", guardar);
   $$("#nuevo1").on("click", nuevo);
-  $$("#logout").on("click", function () {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        // Sign-out successful.
-        console.log("logout success")
-      })
-      .catch(function (error) {
-        // An error happened.
-      });
-  });
+  $$("#logout").on("click", logout);
 });
 
 // Option 1. Using one 'page:init' handler for all pages
@@ -184,6 +173,7 @@ $$(document).on("page:init", function (e) {
   });
   $$("#guardar1").on("click", guardar);
   $$("#guardar3").on("click", guardarnuevo);
+  $$("#logout").on("click", logout);
 
   $$("#nuevo1").on("click", nuevo);
 });
@@ -586,7 +576,14 @@ function fnLogin() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(function () {
-        app.dialog.alert("Bienvenido!<br>Password:" + password);
+        //app.dialog.alert("Bienvenido!<br>Password:" + password);
+        var notificationWithButton = app.notification.create({
+          icon: '<i class="icon demo-icon">WiwBon</i>',
+          title: 'WiwBon',
+          subtitle: 'Bienvenido denuevo Admin',
+          text: 'Mostrando Usuarios',
+          closeButton: true,
+});
         adminPanel();
       })
 
@@ -748,7 +745,7 @@ function guardarnuevo() {
     .then(function (doc) {
       console.log("Document successfully written!");
       app.dialog.alert("Guardado con Éxito");
-      mainView.router.navigate("/panel/");
+      
     })
     .catch(function (error) {
       console.error("Error writing document: ", error);
@@ -787,3 +784,17 @@ const borrarusuario = (idelete) => {
     mainView.router.refreshPage();
   });
 };
+
+function logout(){
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        // Sign-out successful.
+        mainView.router.navigate("/index/");
+        console.log("logout success")
+      })
+      .catch(function (error) {
+        // An error happened.
+      });
+  };
