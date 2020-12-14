@@ -255,12 +255,15 @@ $$(document).on("page:init", '.page[data-name="panel"]', function (e) {
         );
 
         const btnborrar = document.querySelectorAll(".btn-borrar");
+        limitador="0";
         btnborrar.forEach((btn) => {
           btn.addEventListener("click", async (e) => {
             console.log(e.target.dataset.id);
             idelete = e.target.dataset.id;
-
-            await borrarusuario(e.target.dataset.id);
+            limitador++;
+            if (limitador==1){
+            await borrarusuario(idelete);}
+            
           });
         });
 
@@ -432,6 +435,8 @@ querySnapshot.forEach(function(doc) {
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
+        mainView.router.navigate("/index/");
+        app.dialog.alert("Legajo no encontrado");
       }
     })
     .catch(function (error) {
