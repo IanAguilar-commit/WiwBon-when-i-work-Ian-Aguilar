@@ -756,8 +756,8 @@ function nuevo() {
   $$("#f8").text((document.getElementById("f8").value = ""));
   $$("#f9").text((document.getElementById("f9").value = ""));
   $$("#f10").text((document.getElementById("f10").value = ""));
-  //$$("#verfechamotivo").text((document.getElementById("verfechamotivo").value = ""));
-  //$$("#vermotivo").text((document.getElementById("vermotivo").value = ""));
+  //$$("#verfechamotivo").text((document.getElementById("verfechamotivo").text = ""));
+  //$$("#vermotivo").text((document.getElementById("vermotivo").text = ""));
      /*   $$("#verfechasoli").text(
           (document.getElementById("verfechasoli").text = "1")
         );
